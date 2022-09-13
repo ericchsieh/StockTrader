@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<table class="table table-hover">
+    <thead>
+        <tr class="table-info">
+          <th scope="col">Symbols</th>
+          <th scope="col">Name</th>
+          <th scope="col">Shares</th>
+          <th scope="col">Price</th>
+          <th scope="col">TOTAL</th>
+        </tr>
+      </thead>
+    <tbody>
+    {% for row,col in transactions_symbol %}
+    <tr>
+        <td>{{ row["symbol"] }}</td>
+        <td>{{ col }}</td>
+        <td>{{ row["shares"] }}</td>
+        <td>{{ row["price"] | usd }}</td>
+        {% set total = row["price"] * row["shares"] %}
+        <td>${{ '%0.2f'|format(total) }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td>{{ stocks }}</td>
+        <td></td>
+        <th scope="1">Portfolio Total</th>
+        <th scope="1">${{ portfolio_total }}</th>
+      </tr>
+      <tr>
+        <td></td>
+        <td>{{ stocks }}</td>
+        <td></td>
+        <th scope="1">Cash</th>
+        <th scope="1">{{ cash | usd }}</th>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <th scope="1">GRAND TOTAL</th>
+        <th scope="1">${{ total }}</th>
+      </tr>
+    </tfoot>
+
+
+  </table>
+{% endblock %}
