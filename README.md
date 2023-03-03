@@ -3,7 +3,7 @@ A web application that allows you to virtually trade stocks using real-time data
 
 A new user account starts with $10,000 default cash to spend.
 
-Tools: Python, HTML, CSS, SQL, Flask.
+Tools: Python, Flask, HTML, CSS, SQL.
 
 App demo: https://youtu.be/MKv7zI02waQ
 
